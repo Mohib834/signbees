@@ -1,0 +1,22 @@
+body {
+  line-height: 1.59;
+  letter-spacing: 0.24px;
+}
+
+main {
+  margin-top: 65px;
+}
+
+a.signbees-link {
+  text-decoration: none;
+
+  &:hover {
+    color: $color-primary !important;
+  }
+}
+
+// Will modify later
+.theme--light.v-application {
+  background: #fff !important;
+  color: #101010 !important;
+}
