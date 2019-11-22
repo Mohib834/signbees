@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar height="80" app elevation="0">
+  <v-app-bar height="80" app elevation="0" style="z-index:1000">
     <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
     <v-container>
       <v-layout row>

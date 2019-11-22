@@ -1,5 +1,5 @@
 <template>
-  <footer id="TheFooter" class="d-flex flex-column justify-space-between pa-6 pa-sm-0">
+  <footer id="TheFooter" class="d-flex flex-column justify-space-between pa-10 pa-md-2">
     <v-container class="footer mt-7">
       <v-layout row class="mb-6">
         <v-col cols="12" sm="6">
@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss">
 #TheFooter {
-  height: 421px;
+  min-height: 421px;
 }
 
 .footer {

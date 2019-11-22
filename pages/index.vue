@@ -1,9 +1,9 @@
 <template>
   <main>
-    <section id="home-banner">
-      <v-row style="height:100%">
+    <section id="section-home-banner">
+      <v-row style="height:100%" class="pa-10 pa-md-2">
         <v-col
-          cols="6"
+          cols="12"
           offset="0"
           class="offset-sm-1 offset-md-2 offset-lg-1 d-flex align-center pa-0"
           sm="5"
@@ -29,29 +29,75 @@
               >
                 <v-icon class="mr-2">mdi-email</v-icon>Sign up with email
               </v-btn>
-
-              <v-btn
-                class="ml-0 mt-4 mt-lg-0 ml-lg-3"
-                href="#"
-                nuxt
-                style="border-radius: 2px; text-transform:none; border: 1px solid #202225 !important"
-                height="48px"
-                width="220px"
-                color="transparent"
-                elevation="0"
-              >
-                <v-img class="mr-2" :src="googleIcon" contain height="20px" width="20px"></v-img>Sign up with Google
-              </v-btn>
             </v-sheet>
           </v-flex>
         </v-col>
-        <v-col class="pa-0" cols="6" sm="6">
+        <v-col class="pa-0 d-none d-sm-block" cols="0" sm="6">
           <v-img :src="banner" height="100%" />
         </v-col>
       </v-row>
     </section>
 
-    <section id="cta-banner">
+    <section id="section-content-manager">
+      <ContentManagerTabs />
+    </section>
+
+    <section id="section-ad">
+      <v-container style="min-height:760px" class="d-flex align-center">
+        <v-layout row class="pa-10 pa-md-2">
+          <v-col cols="12" md="6">
+            <v-img :src="adImg" alt contain height="477px"></v-img>
+          </v-col>
+          <v-col cols="12" md="6" class="text-left">
+            <h2 class="section-heading mb-6">Free Apps</h2>
+            <p
+              class="section-sub-heading"
+            >Use our social media, information, and entertainment apps to publish feeds, broadcast popular news and infotainment channels.</p>
+            <p
+              class="section-sub-heading"
+            >We constantly expand this section with interesting and useful apps, watch this space for updates.</p>
+            <h3 class="title mb-3" style="color:#010101">Available Apps</h3>
+
+            <v-img :src="appImg" contain />
+
+            <h4 class="subtitle-1 grey--text mt-5 mb-3">Coming Soon</h4>
+
+            <v-sheet class="d-flex mb-12 pb-4 ml-1">
+              <img
+                class="mr-7"
+                v-for="(app, i) in upcomingApp"
+                :key="i"
+                :src="app.imgSrc"
+                alt
+                style="object-fit:contain"
+              />
+            </v-sheet>
+
+            <v-btn
+              href="#"
+              nuxt
+              style="border-radius: 2px; text-transform: none"
+              color="primary"
+              height="48px"
+              width="220px"
+            >
+              Get Your Free Trial
+              <v-icon size="30px" class="mr-n3">mdi-menu-right</v-icon>
+            </v-btn>
+          </v-col>
+        </v-layout>
+      </v-container>
+    </section>
+
+    <section id="where">
+      <PlaceSlider />
+    </section>
+
+    <section id="section-features">
+      <TheFeatures />
+    </section>
+
+    <section id="section-cta-banner">
       <v-container class="py-0" style="height:100%">
         <v-layout row style="height:100%">
           <v-col
@@ -79,36 +125,49 @@
 </template>
 
 <script>
+import TheFeatures from "~/components/TheFeatures/TheFeatures";
 import CtaForm from "~/components/Ui/CtaForm/CtaForm";
+import PlaceSlider from "~/components/PlaceSlider/PlaceSlider";
+import ContentManagerTabs from "~/components/ContentManagerTabs/ContentManagerTabs";
 
 import banner from "~/assets/img/banner.png";
 import googleIcon from "~/assets/img/google.png";
 import manImg from "~/assets/img/man.png";
+import adImg from "~/assets/img/ad.png";
+import appImg from "~/assets/img/apps.png";
+import fb from "~/assets/img/facebook-shaded.png";
+import twitter from "~/assets/img/twitter-shaded.png";
+import owl from "~/assets/img/owl-shaded.png";
 
 export default {
   components: {
-    CtaForm
+    CtaForm,
+    TheFeatures,
+    PlaceSlider,
+    ContentManagerTabs
   },
 
   data() {
     return {
       banner,
       googleIcon,
-      manImg
+      manImg,
+      adImg,
+      appImg,
+      upcomingApp: [{ imgSrc: fb }, { imgSrc: twitter }, { imgSrc: owl }]
     };
   }
 };
 </script>
 
 <style lang="scss">
-#home-banner {
+#section-home-banner {
   height: 92.5vh;
 }
 
-#cta-banner {
+#section-cta-banner {
   background: rgba(#ffbd72, 0.19);
 }
-
 .banner {
   &__subtext {
     font-size: 17px;
@@ -126,7 +185,7 @@ export default {
 }
 
 @media (min-width: 1000px) {
-  #cta-banner {
+  #section-cta-banner {
     height: 430px;
   }
 }
