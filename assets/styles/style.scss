@@ -21,10 +21,33 @@ h2.section-heading {
   color: #010101;
 }
 
-p.section-sub-heading {
-  font-size: 17px;
-  color: #515151;
-  line-height: 27.1px;
+.section-sub-heading {
+  font-size: 17px !important;
+  color: #515151 !important;
+  line-height: 27.1px !important;
+}
+
+.line-above {
+  display: inline-block;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 62px;
+    height: 100%;
+    border-top: 3px solid $color-primary;
+  }
+}
+
+.oval {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  opacity: 0.44;
+  border-radius: 100%;
+  background-color: #fa711e;
 }
 
 // Will modify later

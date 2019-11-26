@@ -38,6 +38,37 @@
       </v-row>
     </section>
 
+    <section id="section-how-it-works">
+      <v-container fluid>
+        <v-layout row>
+          <v-col offset="6">
+            <h2 class="section-heading-title">How it Works</h2>
+          </v-col>
+        </v-layout>
+        <v-layout row>
+          <v-col sm="6">
+            <v-img class="ml-n3" :src="dashboardImg" alt contain width="684px" height="471px"></v-img>
+          </v-col>
+          <v-col sm="6">
+            <ul style="list-style:none" class="pl-0 mt-8">
+              <li>
+                <h2 class="title">1. Create</h2>
+                <p
+                  style="width:381px"
+                >Create playlists in few clicks and manage all your screens in real-time through your Signbees Dashboard using any browser on PC or Tablet.</p>
+              </li>
+              <li>
+                <h2 class="title">2. Distribute</h2>
+                <p
+                  style="width:381px"
+                >Manage, distibute and Update content on your screens on the fly whereever they are located in real time.</p>
+              </li>
+            </ul>
+          </v-col>
+        </v-layout>
+      </v-container>
+    </section>
+
     <section id="section-content-manager">
       <ContentManagerTabs />
     </section>
@@ -127,8 +158,8 @@
 <script>
 import TheFeatures from "~/components/TheFeatures/TheFeatures";
 import CtaForm from "~/components/Ui/CtaForm/CtaForm";
-import PlaceSlider from "~/components/PlaceSlider/PlaceSlider";
-import ContentManagerTabs from "~/components/ContentManagerTabs/ContentManagerTabs";
+import PlaceSlider from "~/components/Ui/PlaceSlider/PlaceSlider";
+import ContentManagerTabs from "~/components/Ui/ContentManagerTabs/ContentManagerTabs";
 
 import banner from "~/assets/img/banner.png";
 import googleIcon from "~/assets/img/google.png";
@@ -138,6 +169,7 @@ import appImg from "~/assets/img/apps.png";
 import fb from "~/assets/img/facebook-shaded.png";
 import twitter from "~/assets/img/twitter-shaded.png";
 import owl from "~/assets/img/owl-shaded.png";
+import dashboardImg from "~/assets/img/dashboard.png";
 
 export default {
   components: {
@@ -154,6 +186,7 @@ export default {
       manImg,
       adImg,
       appImg,
+      dashboardImg,
       upcomingApp: [{ imgSrc: fb }, { imgSrc: twitter }, { imgSrc: owl }]
     };
   }
@@ -168,6 +201,14 @@ export default {
 #section-cta-banner {
   background: rgba(#ffbd72, 0.19);
 }
+
+#section-how-it-works {
+  min-height: 672px;
+  height: 672px;
+  display: flex;
+  align-items: center;
+}
+
 .banner {
   &__subtext {
     font-size: 17px;
