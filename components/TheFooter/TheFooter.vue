@@ -57,8 +57,8 @@
 import logo from "~/assets/img/logo.png";
 import fb from "~/assets/img/fb.png";
 import twitter from "~/assets/img/twitter.png";
-import linkedIn from "~/assets/img/linked.png";
-import insta from "~/assets/img/insta.png";
+import linkedIn from "~/assets/img/linkedin.png";
+import insta from "~/assets/img/instagram.png";
 
 export default {
   data() {

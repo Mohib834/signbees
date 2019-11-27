@@ -42,7 +42,7 @@
                   class="pt-0 mb-3 mb-sm-0 px-0 px-sm-2"
                 >
                   <h4
-                    class="section-sub-heading d-flex ml-md-9 ml-sm-0"
+                    class="section-sub-heading d-flex ml-md-11 ml-sm-0"
                     style="font-size:13px !important; opacity:.55;"
                   >
                     <span class="oval mr-4 mr-sm-2">{{ i + 1 }}</span>

@@ -7,7 +7,7 @@
             <h1 class="display-1 text-center font-weight-medium mb-3">Pricing</h1>
             <p
               class="section-sub-heading ma-auto text-center"
-              style="font-size:15px; width:678px;"
+              style="font-size:15px; max-width:678px;"
             >Signbees was created to help businesses deliver dynamic content at the right place, at the right time for maximum impact.</p>
           </v-col>
         </v-layout>
@@ -17,10 +17,10 @@
     <section id="section-pricing" class="pb-12 mb-10">
       <v-container>
         <v-layout row>
-          <v-col cols="12" sm="5" offset="1">
+          <v-col cols="12" md="5" class="offset-md-1 mb-6">
             <PricingCard :pricingData="pricingDataMonthly" />
           </v-col>
-          <v-col cols="12" sm="5">
+          <v-col cols="12" md="5">
             <PricingCard :pricingData="pricingDataAnnually" />
           </v-col>
         </v-layout>
@@ -45,7 +45,7 @@ export default {
       },
       pricingDataAnnually: {
         title: "Annual",
-        ammount: 6999,
+        amount: 6999,
         recommended: true
       }
     };

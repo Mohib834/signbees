@@ -1,10 +1,10 @@
 <template>
   <v-container class="place-slider">
     <v-layout>
-      <div class="place-slider__path">
-        <v-img :src="pathImg" width="1100px" />
+      <!-- <div class="place-slider__path">
+        <v-img :src="pathImg" max-width="1100px" />
         <v-img class="place-slider__path-bee" :src="beeImg" contain width="31px" height="39px" />
-      </div>
+      </div>-->
       <v-col cols="12" class="mb-4">
         <h2 class="section-heading">Where</h2>
       </v-col>
@@ -21,7 +21,7 @@
         >
           <v-carousel-item class="pa-12 pr-0" v-for="(n, i) in 6" :key="i">
             <v-row>
-              <v-col cols="6">
+              <v-col cols="12" sm="6">
                 <h2 class="title mb-6">Restaurants / Pubs / Lounges</h2>
                 <p
                   class="mb-8"
@@ -39,7 +39,7 @@
                   <v-icon size="30px" class="mr-n3">mdi-menu-right</v-icon>
                 </v-btn>
               </v-col>
-              <v-col cols="6">
+              <v-col sm="6" class="d-none d-md-block">
                 <v-img class="carousel-img" :src="carouselImg" width="554px" height="317px" contain></v-img>
               </v-col>
             </v-row>

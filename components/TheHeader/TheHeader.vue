@@ -6,7 +6,7 @@
         <v-col cols="2" md="4">
           <v-toolbar-title>
             <nuxt-link to="/">
-              <v-img contain :src="logo" alt="SignBees logo" width="139px" height="39px" />
+              <v-img contain :src="require('~/assets/img/logo.png')" :srcset="`${require('~/assets/img/logo@2x.png')} 2x, ${require('~/assets/img/logo@3x.png')} 3x`" alt="SignBees logo" width="139px" height="39px" />
             </nuxt-link>
           </v-toolbar-title>
         </v-col>
@@ -37,12 +37,10 @@
 </template>
 
 <script>
-import logo from "~/assets/img/logo.png";
 
 export default {
   data() {
     return {
-      logo,
       menu: [
         { item: "How it works", link: "/how-it-works" },
         { item: "Features", link: "/features" },

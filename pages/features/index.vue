@@ -9,7 +9,7 @@
 
     <section id="features">
       <v-container>
-        <v-layout row class="pa-10 pa-md-2 pb-md-0">
+        <v-layout row class="pa-10 pa-md-2 pb-md-0 pt-md-6">
           <v-col
             class="pb-0"
             v-for="(feature, i) in features"

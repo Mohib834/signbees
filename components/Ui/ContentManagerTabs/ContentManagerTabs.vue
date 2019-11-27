@@ -16,7 +16,7 @@
         <v-tabs vertical show-arrows>
           <v-tab v-for="(item, i) in managerContents" :key="i">{{ item.tab }}</v-tab>
           <v-tab-item class="offset-3" v-for="(item, i) in managerContents" :key="i">
-            <v-img :src="item.tabItem" contain width="683px" height="559px"></v-img>
+            <v-img :src="item.tabItem" contain max-width="683px" max-height="559px"></v-img>
           </v-tab-item>
         </v-tabs>
       </v-col>

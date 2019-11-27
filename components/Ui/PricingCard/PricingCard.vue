@@ -1,10 +1,11 @@
 <template>
   <v-card
+    outlined
     width="463px"
     height="1240px"
-    class="pa-2"
+    class="pa-2 mx-auto"
     :class="pricingData.recommended && 'grow'"
-    :elevation="pricingData.recommended && '4'"
+    :elevation="pricingData.recommended ? '4' : '1'"
   >
     <v-card-title
       class="d-flex align-center justify-center font-weight-bold"
@@ -18,12 +19,20 @@
       <span style="font-size:26px" class="font-weight-light mb-n5 ml-n12 mr-2">Rs.</span>
       <span>{{pricingData.amount}}</span>
     </v-card-title>
-    <v-card-text>
+    <v-alert
+      v-if="pricingData.recommended"
+      style="color: #ffb800; border: solid 1px rgba(255, 184, 0, 0.26);"
+      dense
+      max-width="339px"
+      color="rgba(255, 184, 0, 0.04)"
+      class="text-uppercase mx-auto text-center mt-n10 font-weight-medium"
+    >recommended</v-alert>
+    <v-card-text class="pa-0 pa-sm-4">
       <v-list v-for="(feature, i) in features" :key="i">
         <v-list-item three-line class="mb-3">
           <v-list-item-content class="pa-0">
             <v-row no-gutters>
-              <v-col cols="2" class="mr-n4">
+              <v-col cols="2" class="mr-0 mr-sm-n4">
                 <v-img
                   contain
                   width="28px"
@@ -55,7 +64,7 @@
         width="371px"
         :outlined="!pricingData.recommended"
         class="text-capitalize font-weight-bold"
-        :color="pricingData.recommended && 'primary'"
+        :color="pricingData.recommended ? 'primary' : null"
       >Sign Up Today</v-btn>
     </v-card-actions>
   </v-card>
@@ -110,6 +119,11 @@ export default {
 .grow {
   transform: scale(1.06);
   margin-left: 5px;
-  border: 1px solid #fa711e;
+  border: 1px solid #ff843b;
+
+  @media (max-width: 900px) {
+    transform: scale(1);
+    border: none;
+  }
 }
 </style>
