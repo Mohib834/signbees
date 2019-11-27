@@ -9,8 +9,16 @@
 
     <section id="features">
       <v-container>
-        <v-layout row class="pa-10 pa-md-2">
-          <v-col v-for="(feature, i) in features" :key="i" cols="12" sm="6" md="6" lg="3">
+        <v-layout row class="pa-10 pa-md-2 pb-md-0">
+          <v-col
+            class="pb-0"
+            v-for="(feature, i) in features"
+            :key="i"
+            cols="12"
+            sm="6"
+            md="6"
+            lg="3"
+          >
             <v-card min-width="273px" height="206px" class="pa-3">
               <v-card-title>
                 <v-img
@@ -25,33 +33,10 @@
             </v-card>
           </v-col>
         </v-layout>
-        <v-layout row>
-          <v-col cols="12" class="d-flex justify-center">
-            <div
-              class="d-flex align-center justify-center"
-              style="background:#fff9f3; border:solid 10px #fffefe; border-radius: 100%; width:80px; height:80px"
-            >
-              <v-img
-                :src="require('~/assets/img/features/bee.png')"
-                :srcset="`${require('~/assets/img/features/bee@2x.png')} 2x, ${require('~/assets/img/features/bee@3x.png')} 3x`"
-                contain
-                width="50px"
-                height="50px"
-              ></v-img>
-            </div>
-          </v-col>
-        </v-layout>
-        <v-layout>
-          <v-col cols="6" offset="3">
-            <h2
-              class="title font-italic text-center"
-              style="color:#515151; font-family: Georgia;"
-            >Easy-to- use software and highly responsive controls to help you achieve your communication goals.</h2>
-          </v-col>
-        </v-layout>
+
+        <BeeComponent>Easy-to- use software and highly responsive controls to help you achieve your communication goals.</BeeComponent>
       </v-container>
     </section>
-
     <section id="feature-detail">
       <v-container>
         <v-layout
@@ -88,6 +73,7 @@
 
 <script>
 import SectionBanner from "~/components/Ui/SectionBanner/SectionBanner";
+import BeeComponent from "~/components/Ui/BeeComponent/BeeComponent";
 
 import featureImg1 from "~/assets/img/features/feature-1.png";
 import featureImg1_2x from "~/assets/img/features/feature-1@2x.png";
@@ -117,7 +103,8 @@ import mouseImg3x from "~/assets/img/features/mouse@3x.png";
 
 export default {
   components: {
-    SectionBanner
+    SectionBanner,
+    BeeComponent
   },
   data() {
     return {
