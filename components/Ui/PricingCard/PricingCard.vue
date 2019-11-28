@@ -4,7 +4,7 @@
     width="463px"
     height="1240px"
     class="pa-2 mx-auto"
-    :class="pricingData.recommended && 'grow'"
+    :class="{'grow': pricingData.recommended}"
     :elevation="pricingData.recommended ? '4' : '1'"
   >
     <v-card-title
@@ -119,7 +119,7 @@ export default {
 .grow {
   transform: scale(1.06);
   margin-left: 5px;
-  border: 1px solid #ff843b;
+  border: 1px solid #ff843b !important;
 
   @media (max-width: 900px) {
     transform: scale(1);

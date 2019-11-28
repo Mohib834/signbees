@@ -17,14 +17,14 @@
           class="d-flex align-center pa-10 pa-md-0 about-item"
           :style="item.imgLeft === true && 'flex-direction:row-reverse'"
         >
-          <v-col cols="12" :sm="item.imgLeft === true ? '6' : '5'">
+          <v-col cols="12" sm="6">
             <h2 style="font-size: 31px" class="mb-3">{{ item.title }}</h2>
             <p
               class="section-sub-heading"
               style="font-size:21px; letter-spacing: .3px"
             >{{ item.text }}</p>
           </v-col>
-          <v-col cols="12" sm="6" :class="item.imgLeft === true ? '' : 'offset-sm-1'">
+          <v-col cols="12" sm="6">
             <v-img :src="item.imgSrc" :srcset="item.imgSrcSet" contain width="550px" height="257px"></v-img>
           </v-col>
         </v-layout>

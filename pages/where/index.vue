@@ -10,10 +10,7 @@
     <section class="section-place" v-for="(item, i) in where" :key="i">
       <v-container fluid class="pa-0">
         <v-layout row :style="`flex-direction: ${item.imgRight ? 'row' : 'row-reverse'}`">
-          <v-col
-            class="d-flex align-center"
-            :class="!item.imgRight ? 'col-sm-6' : 'col-sm-5 offset-1'"
-          >
+          <v-col class="d-flex align-center col-sm-6" :class="{'col-sm-5 offset-1': item.imgRight}">
             <v-sheet>
               <h2 class="section-heading mb-3">{{item.title}}</h2>
               <p class="section-sub-heading mb-5" v-html="item.text" style="width:562px"></p>
