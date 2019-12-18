@@ -1,6 +1,6 @@
 <template>
   <main id="where-page">
-    <SectionBanner full="true">
+    <SectionBanner fluid>
       <template slot="title">Where</template>
       <template
         slot="sub-text"
@@ -9,11 +9,14 @@
 
     <section class="section-place" v-for="(item, i) in where" :key="i">
       <v-container fluid class="pa-0">
-        <v-layout row :style="`flex-direction: ${item.imgRight ? 'row' : 'row-reverse'}`">
-          <v-col class="d-flex align-center col-sm-6" :class="{'col-sm-5 offset-1': item.imgRight}">
+        <v-layout row :style="`flex-direction: ${item.imgRight === true ? 'row' : 'row-reverse'}`">
+          <v-col
+            class="d-flex align-center pa-8 pa-sm-0"
+            :class="item.imgRight === true ? 'col-sm-5 offset-sm-1' : 'col-sm-6'"
+          >
             <v-sheet>
               <h2 class="section-heading mb-3">{{item.title}}</h2>
-              <p class="section-sub-heading mb-5" v-html="item.text" style="width:562px"></p>
+              <p class="section-sub-heading mb-5" v-html="item.text" style="max-width:562px"></p>
 
               <ul style="list-style:none" class="pl-0">
                 <li
@@ -29,7 +32,7 @@
 
               <v-btn
                 v-if="item.btn"
-                href="#"
+                to="/signup"
                 nuxt
                 style="border-radius: 2px; text-transform: none"
                 color="primary"

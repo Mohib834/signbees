@@ -60,7 +60,7 @@
 <script>
 import TheHeader from "~/components/TheHeader/TheHeader";
 import TheFooter from "~/components/TheFooter/TheFooter";
-import { openDb } from "idb";
+import { openDB } from "idb";
 import { auth } from "~/plugins/firebase.js";
 import { mapGetters } from "vuex";
 
@@ -89,7 +89,7 @@ export default {
       async e => {
         if (e.origin === "https://sso.beta.signbees.com") {
           const storeName = "firebaseLocalStorage";
-          const db = await openDb("firebaseLocalStorageDb", 1);
+          const db = await openDB("firebaseLocalStorageDb", 1);
           const tx = db.transaction(storeName, "readwrite");
           const store = tx.objectStore(storeName);
           await store.put(e.data.data);

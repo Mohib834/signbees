@@ -3,6 +3,18 @@ body {
   letter-spacing: 0.24px;
 }
 
+section {
+  margin: 100px 0;
+}
+
+#section-home-banner {
+  margin: 0 0;
+}
+
+#section-cta-banner {
+  margin-bottom: 0;
+}
+
 main {
   margin-top: 65px;
 }
@@ -13,6 +25,10 @@ a.signbees-link {
   &:hover {
     color: $color-primary !important;
   }
+}
+
+a.nuxt-link-exact-active.nuxt-link-active {
+  color: $color-primary !important;
 }
 
 h2.section-heading {

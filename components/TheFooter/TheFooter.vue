@@ -73,12 +73,14 @@ export default {
       companyLinks: [
         { text: "About us", link: "/about" },
         { text: "Contact us", link: "/contact" },
-        { text: "Where to use", link: "#" }
+        { text: "Where to use", link: "/where" },
+        { text: "Term of usage", link: "/term-of-usage" }
       ],
       extraLinks: [
-        { text: "How it works", link: "#" },
-        { text: "Features", link: "#" },
-        { text: "Price", link: "#" }
+        { text: "How it works", link: "/how-it-works" },
+        { text: "Features", link: "/features" },
+        { text: "Pricing", link: "/pricing" },
+        { text: "Privacy Policy", link: "/privacy-policy" }
       ]
     };
   }

@@ -36,9 +36,9 @@
                   </v-list>
                 </v-card-text>
               </v-col>
-              <v-col col="12" md="6" class="d-flex align-center">
+              <v-col col="12" md="6" class="d-flex align-center mt-4">
                 <v-form style="width:400px;" class="mx-auto" ref="form">
-                  <div v-if="!signingUp">
+                  <div v-if="!signingUp && !isUserEmailExist.exist">
                     <v-text-field
                       type="email"
                       outlined
@@ -57,10 +57,27 @@
                       class="text-capitalize font-weight-bold mb-3"
                       color="primary"
                       block
-                      @click="$refs.form.validate() ? signingUp = true : null"
+                      :loading="loading"
+                      @click="checkUserEmailExistence"
                     >Get Started</v-btn>
+
+                    <v-layout row>
+                      <v-col class>
+                        <p class="subtitle-2">
+                          By signing up, you agree to the
+                          <nuxt-link
+                            to="/term-of-service"
+                            class="mr-1 signbees-link"
+                          >Term of Service</nuxt-link>by Signbees.
+                        </p>
+                        <p class="subtitle-2">
+                          Already have an account ?
+                          <nuxt-link to="/signin" class="signbees-link">Login</nuxt-link>
+                        </p>
+                      </v-col>
+                    </v-layout>
                   </div>
-                  <div v-else>
+                  <template v-if="signingUp && !isUserEmailExist.exist">
                     <v-layout row class="flex-column text-center">
                       <h2 class="section-sub-heading">Let's get you started</h2>
                       <p class="caption">Set up a password for your account</p>
@@ -71,6 +88,7 @@
                           :rules="rules.name"
                           v-model="userData.firstName"
                           label="First Name"
+                          :disabled="loading == true"
                           outlined
                           dense
                           type="text"
@@ -78,6 +96,7 @@
                       </v-col>
                       <v-col class="px-0">
                         <v-text-field
+                          :disabled="loading == true"
                           :rules="rules.name"
                           v-model="userData.lastName"
                           label="Last Name"
@@ -90,9 +109,9 @@
                     <v-layout row class="mb-n6">
                       <v-col class="px-0">
                         <v-text-field
+                          disabled
                           :rules="rules.email"
                           v-model="userData.email"
-                          disabled
                           label="Email"
                           outlined
                           dense
@@ -103,6 +122,7 @@
                     <v-layout row class="mb-n6">
                       <v-col class="px-0">
                         <v-text-field
+                          :disabled="loading == true"
                           :rules="rules.password"
                           label="Password"
                           v-model="userData.password"
@@ -115,6 +135,7 @@
                     <v-layout row class="mb-n6">
                       <v-col class="px-0">
                         <v-text-field
+                          :disabled="loading == true"
                           :rules="rules.confirmPassword"
                           label="Confirm Password"
                           v-model="userData.confirmPassword"
@@ -137,19 +158,31 @@
                         >Let's Go!</v-btn>
                       </v-col>
                     </v-layout>
-                  </div>
-                  <v-layout row>
-                    <v-col class>
-                      <p class="subtitle-2">
-                        By signing up, you agree to the
-                        <nuxt-link to="/term-of-service" class="mr-1 signbees-link">Term of Service</nuxt-link>by Signbees.
-                      </p>
-                      <p class="subtitle-2">
-                        Already have an account ?
-                        <nuxt-link to="/signin" class="signbees-link">Login</nuxt-link>
-                      </p>
-                    </v-col>
-                  </v-layout>
+                  </template>
+                  <template v-if="isUserEmailExist.exist">
+                    <v-layout row>
+                      <v-col>
+                        <h2 class="title">Welcome back</h2>
+                        <h1 class="display-1">{{isUserEmailExist.user}}</h1>
+                        <p class="mb-0 mt-4">We have found you on our system!</p>
+                        <p>
+                          Use your email to
+                          <a
+                            href="https://dashboard.beta.signbees.com"
+                            class="signbees-link"
+                          >Login Now!</a>
+                        </p>
+                        <p class="subtitle-1">
+                          <strong>Forgot password?</strong>
+                          <br />
+                          <a
+                            href="https://dashboard.signbees.com/#/login/forgot-password"
+                            class="signbees-link"
+                          >Click here</a> to reset your password now!
+                        </p>
+                      </v-col>
+                    </v-layout>
+                  </template>
                 </v-form>
               </v-col>
             </v-layout>
@@ -161,13 +194,13 @@
 </template>
 
 <script>
-import { openDb } from "idb";
+import { openDB } from "idb";
 import { mapGetters } from "vuex";
 
 export default {
   async beforeMount() {
     const storeName = "firebaseLocalStorage";
-    const db = await openDb("firebaseLocalStorageDb", 1);
+    const db = await openDB("firebaseLocalStorageDb", 1);
     const tx = db.transaction(storeName, "readwrite");
     const store = tx.objectStore(storeName);
     const data = await store.getAll();
@@ -177,13 +210,17 @@ export default {
       window.location.replace("https://dashboard.beta.signbees.com/#/");
     }
   },
+  mounted() {
+    this.$store.commit("changeUserEmailExistenceStatus", false);
+    this.$store.commit("changeSigningUpStatus", false);
+  },
   data() {
     return {
       items: [
         "Initial set up process included",
-        "14 days Free Trial",
+        "One Free Screen",
         "Access to Premium Apps",
-        "24*7 Dedicated Support",
+        "24*5 Dedicated Support",
         "No Card Required"
       ],
       userData: {
@@ -193,12 +230,14 @@ export default {
         password: "",
         confirmPassword: ""
       },
-      signingUp: false,
       rules: {
         name: [v => v.length === 0 && "Field cannot be left empty !"],
         email: [
           v => v.length === 0 && "Field cannot be left empty !",
-          v => /.+@.+/.test(v) || "Invalid Email address"
+          v =>
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+              v
+            ) || "Invalid Email address"
         ],
         password: [
           v => v.length === 0 && "Field cannot be left empty !",
@@ -219,7 +258,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["loading", "isUserLoggedIn"])
+    ...mapGetters([
+      "loading",
+      "isUserLoggedIn",
+      "isUserEmailExist",
+      "signingUp"
+    ])
   },
   methods: {
     signUp() {
@@ -227,6 +271,11 @@ export default {
       delete newUser.confirmPassword;
 
       this.$store.dispatch("signup", { vm: this, newUser: { ...newUser } });
+    },
+    checkUserEmailExistence() {
+      if (this.$refs.form.validate()) {
+        this.$store.dispatch("checkUserEmail", { email: this.userData.email });
+      }
     }
   }
 };

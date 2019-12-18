@@ -1,5 +1,5 @@
 <template>
-  <main id="pricing-page">
+  <main id="pricing-page" class="main">
     <section id="section-intro">
       <v-container>
         <v-layout>
@@ -14,7 +14,7 @@
       </v-container>
     </section>
 
-    <section id="section-pricing" class="pb-12 mb-10">
+    <section id="section-pricing" class="pb-12 mb-10 mt-0 mt-sm-3">
       <v-container>
         <v-layout row class="mb-12">
           <v-col cols="12" md="5" class="offset-md-1 mb-6">
@@ -24,22 +24,34 @@
             <PricingCard :pricingData="pricingDataAnnually" />
           </v-col>
         </v-layout>
-        <v-layout row>
+
+        <v-layout row class="my-6 my-sm-2">
           <v-col>
-            <h1 class="display-1 text-center font-weight-medium">Features Available On All Plans</h1>
+            <h1
+              class="display-1 font-weight-medium text-center features-title"
+            >Features Available on All Plans</h1>
           </v-col>
         </v-layout>
-        <v-layout row wrap style="max-width:990px" class="mx-auto pt-8 pa-sm-6">
-          <v-col cols="12" md="6" v-for="(feature, i) in features" :key="i">
-            <div class="d-flex">
-              <div class="mr-4 mb-n6">
-                <v-img contain :src="require('~/assets/img/pricing/tick.png')" />
-              </div>
-              <div>
-                <h3>{{feature.title}}</h3>
-                <p class="section-sub-heading">{{ feature.text }}</p>
-              </div>
-            </div>
+
+        <v-layout row wrap class="pa-0 pa-md-12">
+          <v-col class="d-flex" cols="12" md="6" v-for="(feature, i) in features" :key="i">
+            <v-img
+              style="position:relative; top:5px"
+              contain
+              width="28px"
+              height="28px"
+              :src="require('~/assets/img/pricing/tick.png')"
+              :srcset="`${require('~/assets/img/pricing/tick@2x.png')} 2x, ${require('~/assets/img/pricing/tick@3x.png')} 3x`"
+            ></v-img>
+            <v-flex style="width:80%">
+              <h2 class="heading d-flex align-center mb-2">
+                <span>{{ feature.title }}</span>
+              </h2>
+              <p
+                class="font-weight-medium"
+                style="font-size: 15px; opacity:.5; line-height:22px; color:#515151"
+              >{{ feature.text }}</p>
+            </v-flex>
           </v-col>
         </v-layout>
       </v-container>
@@ -107,5 +119,12 @@ export default {
   height: 300px;
   display: flex;
   align-items: center;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .features-title {
+    font-size: 30px !important;
+  }
 }
 </style>

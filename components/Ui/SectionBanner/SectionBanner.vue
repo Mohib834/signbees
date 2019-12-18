@@ -38,6 +38,7 @@ export default {
   align-items: center;
   color: white;
   position: relative;
+  margin: 0;
 
   .banner {
     position: absolute;

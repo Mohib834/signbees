@@ -2,7 +2,8 @@
   <v-card
     outlined
     width="463px"
-    class="pa-2 pb-8 mx-auto"
+    height="500px"
+    class="pa-2 mx-auto"
     :class="{'grow': pricingData.recommended}"
     :elevation="pricingData.recommended ? '4' : '1'"
   >
@@ -26,6 +27,34 @@
       color="rgba(255, 184, 0, 0.04)"
       class="text-uppercase mx-auto text-center mt-n10 font-weight-medium"
     >recommended</v-alert>
+    <!-- <v-card-text class="pa-0 pa-sm-4">
+      <v-list v-for="(feature, i) in features" :key="i">
+        <v-list-item three-line class="mb-3">
+          <v-list-item-content class="pa-0">
+            <v-row no-gutters>
+              <v-col cols="2" class="mr-0 mr-sm-n4">
+                <v-img
+                  contain
+                  width="28px"
+                  height="28px"
+                  :src="require('~/assets/img/pricing/tick.png')"
+                  :srcset="`${require('~/assets/img/pricing/tick@2x.png')} 2x, ${require('~/assets/img/pricing/tick@3x.png')} 3x`"
+                ></v-img>
+              </v-col>
+              <v-col cols="10">
+                <h2 style="font-size:21px" class="d-flex align-center mb-2">
+                  <span>{{ feature.title }}</span>
+                </h2>
+                <p
+                  class="font-weight-medium"
+                  style="font-size: 15px; opacity:.5; line-height:22px; color:#515151"
+                >{{ feature.text }}</p>
+              </v-col>
+            </v-row>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-card-text>-->
     <v-card-actions class="d-flex justify-center mt-6">
       <v-btn
         href="/signup"

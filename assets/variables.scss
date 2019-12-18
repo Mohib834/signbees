@@ -3,4 +3,12 @@
 // The variables you want to modify
 // $font-size-root: 20px;
 // $font-size-root: 15px; Not working right now
+
+@font-face {
+  font-family: "ClearSans-Medium";
+  src: url("/static/fonts/ClearSans/ClearSans-Medium.ttf");
+}
+
 $color-primary: #fa711e;
+$body-font-family: "ClearSans-Medium", sans-serif !important;
+$heading-font-family: "ClearSans-Medium", sans-serif !important;

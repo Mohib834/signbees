@@ -1,9 +1,16 @@
 <template>
   <main>
-    <section id="section-home-banner" class="d-flex align-center" style="position:relative">
-      <v-container>
-        <v-row style="height:100%" class="pa-10 pa-md-2">
-          <v-col cols="12" md="6" class="d-flex align-center pa-0">
+    <section id="section-home-banner" class="d-flex" style="position:relative">
+      <v-container fluid class="pa-0">
+        <v-row style="height:100%" class="pa-10 pa-sm-2 pa-md-2">
+          <v-col
+            cols="12"
+            offset="0"
+            class="offset-sm-1 offset-md-2 offset-lg-1 d-flex align-center pa-0"
+            sm="5"
+            md="4"
+            lg="5"
+          >
             <v-flex class>
               <h1
                 class="display-1 font-weight-medium mb-3"
@@ -20,19 +27,16 @@
                   color="primary"
                   height="48px"
                   width="220px"
+                  v-if="!isUserLoggedIn"
                 >
                   <v-icon class="mr-2">mdi-email</v-icon>Sign up with email
                 </v-btn>
               </v-sheet>
             </v-flex>
           </v-col>
-          <v-img
-            style="position:absolute; right:0; top:0"
-            :src="banner"
-            :srcset="bannerSrcSet"
-            height="100%"
-            class="d-none d-md-block"
-          />
+          <v-col class="pa-0 d-none d-sm-block" cols="0" sm="6">
+            <v-img :src="banner" :srcset="bannerSrcSet" height="100%" />
+          </v-col>
         </v-row>
       </v-container>
     </section>
@@ -40,8 +44,8 @@
     <section id="section-how-it-works" style="position:relative">
       <v-container fluid>
         <v-layout row class="mb-n5">
-          <v-col cols="12" md="6" class="offset-md-6">
-            <h2 class="section-heading-title">How it Works</h2>
+          <v-col cols="12" md="6" class="offset-md-6 text-center text-sm-left">
+            <h2 class="section-heading">How it Works</h2>
           </v-col>
         </v-layout>
         <v-layout row>
@@ -121,11 +125,11 @@
       </v-container>
     </section>
 
-    <!-- <section id="section-content-manager">
+    <section id="section-content-manager" style="min-height:650px">
       <ContentManagerTabs />
-    </section>-->
+    </section>
 
-    <section id="section-ad">
+    <section id="section-ad" class="my-10">
       <v-container style="min-height:760px" class="d-flex align-center">
         <v-layout row class="pa-10 pa-md-2">
           <v-col cols="12" md="6">
@@ -196,8 +200,8 @@
               class="cta-banner__sub-heading"
               style="font-size:17px;"
             >Subscribe to our newsletter for tips, ideas, and your industry related news.</p>
-
-            <CtaForm />
+            <!-- 
+            <CtaForm />-->
           </v-col>
           <v-col cols="12" md="6" class="pa-0 d-flex justify-end" align-self="end">
             <v-img :src="manImg" :srcset="manImgSrcSet" width="436px" height="383px" contain></v-img>
@@ -209,6 +213,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import TheFeatures from "~/components/TheFeatures/TheFeatures";
 import CtaForm from "~/components/Ui/CtaForm/CtaForm";
 import PlaceSlider from "~/components/Ui/PlaceSlider/PlaceSlider";
@@ -278,6 +284,9 @@ export default {
         { imgSrc: owl, imgSrcSet: `${owl2x} 2x, ${owl3x} 3x` }
       ]
     };
+  },
+  computed: {
+    ...mapGetters(["isUserLoggedIn"])
   }
 };
 </script>
@@ -293,7 +302,6 @@ export default {
 
 #section-how-it-works {
   min-height: 672px;
-  height: 672px;
   display: flex;
   align-items: center;
 }
