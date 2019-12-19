@@ -247,8 +247,8 @@ import owl2x from "~/assets/img/owl-shaded@2x.png";
 import owl3x from "~/assets/img/owl-shaded@3x.png";
 
 import dashboardImg from "~/assets/img/dashboard.png";
-import dashboardImg2x from "~/assets/img/dashboard@2x.png";
-import dashboardImg3x from "~/assets/img/dashboard@3x.png";
+// import dashboardImg2x from "~/assets/img/dashboard@2x.png";
+// import dashboardImg3x from "~/assets/img/dashboard@3x.png";
 
 import fb from "~/assets/img/fb-shaded.png";
 import fb2x from "~/assets/img/fb-shaded@2x.png";
@@ -276,7 +276,8 @@ export default {
       appImgSrcSet: `${appImg2x} 2x, ${appImg3x} 3x`,
 
       dashboardImg,
-      dashboardImgSrcSet: `${dashboardImg2x} 2x, ${dashboardImg3x} 3x`,
+      dashboardImgSrcSet: '',
+      // dashboardImgSrcSet: `${dashboardImg2x} 2x, ${dashboardImg3x} 3x`,
 
       upcomingApp: [
         { imgSrc: fb, imgSrcSet: `${fb2x} 2x, ${fb3x} 3x` },

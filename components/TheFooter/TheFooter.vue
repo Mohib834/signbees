@@ -13,7 +13,7 @@
             :key="i"
             :href="item.link"
           >
-            <v-icon size="20" color="white">mdi-{{item.icon}}</v-icon>
+            <v-icon size="17" color="white">mdi-{{item.icon}}</v-icon>
           </a>
         </v-col>
       </v-row>
@@ -118,8 +118,8 @@ export default {
   min-height: 421px;
 
   .social-link {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     display: flex;
     background: #aeaeae;
     align-items: center;

@@ -19,11 +19,11 @@
           hide-slider
           color="#101010"
           fixed-tabs
-          :height="smallWidth === false ? '360px' : '100px'"
+          :height="smallWidth === false ? '260px' : '100px'"
         >
           <v-tab
             :ripple="false"
-            class="d-flex justify-start pl-0"
+            class="d-flex justify-start pl-0 content-tab"
             :style="!smallWidth && 'border-bottom: 1px solid rgba(151, 151, 151, 0.28)'"
             v-for="(item, i) in managerContents"
             :key="i"
@@ -33,7 +33,7 @@
               <v-icon
                 style="transition:all .3s; opacity:0"
                 color="primary"
-                class="ml-n2"
+                class="ml-n2 right-chevron"
                 size="30"
                 :style="activeTab === i && 'opacity:1'"
               >mdi-chevron-right</v-icon>
@@ -52,6 +52,9 @@
 
 <script>
 import contentImg1 from "~/assets/img/content-1.png";
+import contentImg2 from "~/assets/img/content-2.png";
+import contentImg3 from "~/assets/img/content-3.png";
+import contentImg4 from "~/assets/img/content-4.png";
 
 export default {
   data() {
@@ -60,11 +63,10 @@ export default {
       windowWidth: 0,
       smallWidth: false,
       managerContents: [
-        { tab: "Status and Location", tabItem: contentImg1 },
-        { tab: "Multi type content support", tabItem: contentImg1 },
-        { tab: "Create and schedule playlists", tabItem: contentImg1 },
-        { tab: "Grouping Screens", tabItem: contentImg1 },
-        { tab: "Create and schedule playlists", tabItem: contentImg1 }
+        { tab: "Realtime updates", tabItem: contentImg1 },
+        { tab: "Multi type content support", tabItem: contentImg2 },
+        { tab: "Create and schedule playlists", tabItem: contentImg3 },
+        { tab: "Grouping Screens", tabItem: contentImg4 }
       ]
     };
   },
@@ -93,12 +95,19 @@ export default {
   margin-top: -100px;
 }
 
+.content-tab {
+  &:hover .right-chevron {
+    opacity: 1 !important;
+  }
+
+  &:hover::before {
+    display: none;
+  }
+}
+
 @media (max-width: 1000px) {
   .v-tabs-items.v-window {
     margin-top: 50px;
-  }
-
-  .tabs__tab {
   }
 }
 </style>

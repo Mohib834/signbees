@@ -37,7 +37,7 @@
                 </v-card-text>
               </v-col>
               <v-col col="12" md="6" class="d-flex align-center mt-4">
-                <v-form style="width:400px;" class="mx-auto" ref="form">
+                <v-form style="width:400px;" class="mx-auto" ref="form" @submit.prevent>
                   <div v-if="!signingUp && !isUserEmailExist.exist">
                     <v-text-field
                       type="email"

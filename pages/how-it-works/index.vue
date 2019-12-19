@@ -9,48 +9,35 @@
       <BeeComponent>Impact your customers and or employees with all your digital content in just 3 steps.</BeeComponent>
     </section>
 
-    <section
-      class="section-showcase d-flex justify-center flex-column"
-      v-for="(item,i) in showcases"
-      :key="i"
-    >
+    <section class="section-showcase d-flex justify-center flex-column">
       <v-container>
-        <v-row class="pa-10 pa-md-2">
+        <v-row class="pa-10 pa-md-2 mb-n10 mt-8">
           <v-col cols="12">
-            <h2 class="section-heading text-center mb-0 mb-sm-5">{{ item.title }}</h2>
+            <h2 class="section-heading text-center mb-0 mb-sm-5">Android TV</h2>
           </v-col>
         </v-row>
-        <v-row class="pa-10 pa-md-2 pt-0">
+        <v-row class="pa-10 pa-md-2 pt-0 mb-10">
           <v-col cols="12" class="pb-0 pb-md-2">
             <v-img
               contain
-              width="1137px"
-              max-height="233px"
-              :src="item.imgSrc"
-              :srcset="item.imgSrcSet"
+              :src="require('~/assets/img/how-it-works/android.png')"
               class="mb-10 mb-sm-0"
             ></v-img>
           </v-col>
-          <v-col cols="12">
-            <v-container>
-              <v-row class="mt-n6 mt-md-n2">
-                <v-col
-                  cols="12"
-                  md="4"
-                  v-for="(pt, i) in item.showcasePoint"
-                  :key="i"
-                  class="pt-0 mb-3 mb-sm-0 px-0 px-sm-2"
-                >
-                  <h4
-                    class="section-sub-heading d-flex ml-md-11 ml-sm-0"
-                    style="font-size:13px !important; opacity:.55;"
-                  >
-                    <span class="oval mr-4 mr-sm-2">{{ i + 1 }}</span>
-                    {{ pt }}
-                  </h4>
-                </v-col>
-              </v-row>
-            </v-container>
+        </v-row>
+        <v-row class="mb-10">
+          <v-col class="text-center">
+            <h1 class="display-1">Don't have an Android TV?</h1>
+            <h1 class="display-1 mb-5">We've got you covered!</h1>
+            <p class="my-0 section-sub-heading">
+              All you need is an
+              <a
+                href="https://bit.ly/2Vb6Wg3"
+                target="_blank"
+              >Airtel Xstream Stick</a> or the
+              <a href="https://amzn.to/2oV72fr" target="_blank">Amazon Fire TV Stick</a> connected to your HDMI TV!
+            </p>
+            <p class="my-0 section-sub-heading">Follow the same steps above and you're done!</p>
           </v-col>
         </v-row>
       </v-container>
@@ -62,44 +49,10 @@
 import SectionBanner from "~/components/Ui/SectionBanner/SectionBanner";
 import BeeComponent from "~/components/Ui/BeeComponent/BeeComponent";
 
-import androidImg from "~/assets/img/how-it-works/android.png";
-import androidImg2x from "~/assets/img/how-it-works/android@2x.png";
-import androidImg3x from "~/assets/img/how-it-works/android@3x.png";
-
-import hdmiImg from "~/assets/img/how-it-works/hdmi.png";
-import hdmiImg2x from "~/assets/img/how-it-works/hdmi@2x.png";
-import hdmiImg3x from "~/assets/img/how-it-works/hdmi@3x.png";
-
 export default {
   components: {
     SectionBanner,
     BeeComponent
-  },
-  data() {
-    return {
-      showcases: [
-        {
-          title: "Android TV",
-          imgSrc: androidImg,
-          imgSrcSet: `${androidImg2x} 2x, ${androidImg3x} 3x`,
-          showcasePoint: [
-            "Sign up to Signbees",
-            "Install the signbees software from player.signbees.com onto your android tv screen",
-            "Sign in to Signbees Content Manager to connect and manage all your screens using a browser on your pc or tablet"
-          ]
-        },
-        {
-          title: "HDMI TV",
-          imgSrc: hdmiImg,
-          imgSrcSet: `${hdmiImg2x} 2x, ${hdmiImg3x} 3x`,
-          showcasePoint: [
-            "Sign up to Signbees",
-            "Install the signbees software from player.signbees.com onto your android tv screen",
-            "Sign in to Signbees Content Manager to connect and manage all your screens using a browser on your pc or tablet"
-          ]
-        }
-      ]
-    };
   }
 };
 </script>
@@ -107,7 +60,6 @@ export default {
 <style lang="scss" scoped>
 .section-showcase {
   min-height: 600px;
-  background-image: linear-gradient(to bottom, #ffffff, rgba(#ececec, 0.33));
 }
 
 .oval {

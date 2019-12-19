@@ -140,13 +140,13 @@ export default {
   data() {
     return {
       contactData: {
-        firstName: "Mohib",
-        companyName: "test company",
-        lastName: "Arshi",
-        email: "syed.test44@gmail.com",
-        contact: "9876543211",
+        firstName: "",
+        companyName: "",
+        lastName: "",
+        email: "",
+        contact: "",
         industry: "",
-        query: "Test query"
+        query: ""
       },
       rules: {
         name: [v => v.length === 0 && "Field cannot be left empty"],
