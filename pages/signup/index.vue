@@ -4,10 +4,10 @@
       <iframe ref="iframe" src="https://sso.beta.signbees.com" width="100%" height="100%"></iframe>
     </v-card>
     <v-container>
-      <v-layout row>
+      <v-row>
         <v-col>
           <v-card elevation="0" outlined class="pa-10">
-            <v-layout row>
+            <v-row>
               <v-col col="12" md="6">
                 <v-card-title class="d-flex flex-column align-start">
                   <h1 class="title font-weight-bold mb-4">Ready to meet Signbees</h1>
@@ -61,7 +61,7 @@
                       @click="checkUserEmailExistence"
                     >Get Started</v-btn>
 
-                    <v-layout row>
+                    <v-row>
                       <v-col class>
                         <p class="subtitle-2">
                           By signing up, you agree to the
@@ -75,14 +75,14 @@
                           <nuxt-link to="/signin" class="signbees-link">Login</nuxt-link>
                         </p>
                       </v-col>
-                    </v-layout>
+                    </v-row>
                   </div>
                   <template v-if="signingUp && !isUserEmailExist.exist">
-                    <v-layout row class="flex-column text-center">
+                    <v-row class="flex-column text-center">
                       <h2 class="section-sub-heading">Let's get you started</h2>
                       <p class="caption">Set up a password for your account</p>
-                    </v-layout>
-                    <v-layout row class="mb-n6">
+                    </v-row>
+                    <v-row class="mb-n6">
                       <v-col class="px-0 pr-1">
                         <v-text-field
                           :rules="rules.name"
@@ -105,8 +105,8 @@
                           type="text"
                         ></v-text-field>
                       </v-col>
-                    </v-layout>
-                    <v-layout row class="mb-n6">
+                    </v-row>
+                    <v-row class="mb-n6">
                       <v-col class="px-0">
                         <v-text-field
                           disabled
@@ -118,8 +118,8 @@
                           type="email"
                         ></v-text-field>
                       </v-col>
-                    </v-layout>
-                    <v-layout row class="mb-n6">
+                    </v-row>
+                    <v-row class="mb-n6">
                       <v-col class="px-0">
                         <v-text-field
                           :disabled="loading == true"
@@ -131,8 +131,8 @@
                           type="password"
                         ></v-text-field>
                       </v-col>
-                    </v-layout>
-                    <v-layout row class="mb-n6">
+                    </v-row>
+                    <v-row class="mb-n6">
                       <v-col class="px-0">
                         <v-text-field
                           :disabled="loading == true"
@@ -144,8 +144,8 @@
                           type="password"
                         ></v-text-field>
                       </v-col>
-                    </v-layout>
-                    <v-layout row class>
+                    </v-row>
+                    <v-row class>
                       <v-col class="px-0">
                         <v-btn
                           style="border-radius: 2px; font-size:19px; border:2px solid rgba(0,0,0,.27)"
@@ -157,10 +157,10 @@
                           @click="signUp"
                         >Let's Go!</v-btn>
                       </v-col>
-                    </v-layout>
+                    </v-row>
                   </template>
                   <template v-if="isUserEmailExist.exist">
-                    <v-layout row>
+                    <v-row>
                       <v-col>
                         <h2 class="title">Welcome back</h2>
                         <h1 class="display-1">{{isUserEmailExist.user}}</h1>
@@ -181,14 +181,14 @@
                           >Click here</a> to reset your password now!
                         </p>
                       </v-col>
-                    </v-layout>
+                    </v-row>
                   </template>
                 </v-form>
               </v-col>
-            </v-layout>
+            </v-row>
           </v-card>
         </v-col>
-      </v-layout>
+      </v-row>
     </v-container>
   </main>
 </template>

@@ -9,7 +9,7 @@
 
     <section id="features">
       <v-container>
-        <v-layout row class="pa-10 pa-md-2 pb-md-0 pt-md-6">
+        <v-row class="pa-10 pa-md-2 pb-md-0 pt-md-6">
           <v-col
             class="pb-0"
             v-for="(feature, i) in features"
@@ -32,14 +32,14 @@
               <v-card-text class="section-sub-heading text-center pt-1 pa-0 px-4">{{ feature.text }}</v-card-text>
             </v-card>
           </v-col>
-        </v-layout>
+        </v-row>
 
         <BeeComponent>Easy-to- use software and highly responsive controls to help you achieve your communication goals.</BeeComponent>
       </v-container>
     </section>
     <section id="feature-detail">
       <v-container>
-        <v-layout
+        <v-row
           row
           v-for="(item, i) in featureDetails"
           style="min-height:343px"
@@ -65,7 +65,7 @@
           <v-col cols="12" sm="6">
             <v-img contain :src="item.img" :srcset="item.imgSrcSet" width="372px" height="254px"></v-img>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
   </main>

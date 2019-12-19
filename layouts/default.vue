@@ -1,7 +1,7 @@
 <template>
   <v-app class="black--text">
     <TheHeader @openDrawer="drawer = !drawer" :menu="menu" />
-    <v-navigation-drawer v-model="drawer" absolute temporary style="z-index: 1000">
+    <v-navigation-drawer v-model="drawer" temporary fixed style="z-index: 1000;">
       <v-list dense>
         <v-list-item class="mb-6 mt-2">
           <nuxt-link to="/">

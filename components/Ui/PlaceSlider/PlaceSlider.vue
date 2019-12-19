@@ -1,6 +1,6 @@
 <template>
   <v-container class="place-slider">
-    <v-layout>
+    <v-row>
       <div class="place-slider__path d-none d-lg-block">
         <v-img :src="pathImg" max-width="1100px" />
         <v-img class="place-slider__path-bee" :src="beeImg" contain width="31px" height="39px" />
@@ -8,8 +8,8 @@
       <v-col cols="12" class="mb-4">
         <h2 class="section-heading">Where</h2>
       </v-col>
-    </v-layout>
-    <v-layout>
+    </v-row>
+    <v-row>
       <v-col cols="12" class="carousel-container">
         <v-carousel
           height="375px"
@@ -28,14 +28,14 @@
                   style="font-size:17px; color:#575757; max-width:472px;"
                 >{{ place.text }}</p>
                 <v-btn
-                  href="#"
+                  href="/signup"
                   nuxt
                   style="border-radius: 2px; text-transform: none"
                   color="primary"
                   height="48px"
-                  width="220px"
+                  width="236px"
                 >
-                  Get Your Free Trial
+                  Connect to signbees now
                   <v-icon size="30px" class="mr-n3">mdi-menu-right</v-icon>
                 </v-btn>
               </v-col>
@@ -52,7 +52,7 @@
           </v-carousel-item>
         </v-carousel>
       </v-col>
-    </v-layout>
+    </v-row>
   </v-container>
 </template>
 

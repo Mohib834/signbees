@@ -1,14 +1,14 @@
 <template>
   <v-container class="TheFeatures pa-10 pa-md-2 py-md-3">
-    <v-layout row class="mb-4" style="flex:0">
+    <v-row class="mb-4" style="flex:0">
       <v-col col="12">
         <h2 class="section-heading text-center">Why Choose Signbees?</h2>
       </v-col>
-    </v-layout>
-    <v-layout row style="flex:0">
+    </v-row>
+    <v-row style="flex:0">
       <v-col v-for="(feature, i) in features" :key="i" cols="12" sm="6" md="4">
         <v-card class="TheFeatures__card pa-3 pa-sm-1" height="327px">
-          <v-card-title>{{ feature.title }}</v-card-title>
+          <v-card-title class="TheFeatures__cardTitle">{{ feature.title }}</v-card-title>
           <v-card-text class="TheFeatures__cardText" v-html="feature.content"></v-card-text>
           <v-img
             class="TheFeatures__cardImg"
@@ -20,7 +20,7 @@
           />
         </v-card>
       </v-col>
-    </v-layout>
+    </v-row>
   </v-container>
 </template>
 
@@ -86,13 +86,32 @@ export default {
   justify-content: center;
 
   &__card {
+    cursor: pointer;
     position: relative;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__cardTitle {
+    transition: all 0.3s;
+  }
+
+  &__card:hover &__cardImg {
+    filter: grayscale(0);
+  }
+
+  &__card:hover &__cardTitle {
+    color: #fa711e;
   }
 
   &__cardImg {
     position: absolute;
     bottom: 0;
     right: 0;
+    filter: grayscale(100%);
+    transition: all 0.3s;
   }
 
   &__cardText {

@@ -1,7 +1,7 @@
 <template>
   <form class="d-flex">
     <v-container class="pa-0">
-      <v-layout row>
+      <v-row>
         <v-col cols="12" md="7" lg="8">
           <v-text-field
             style="border-radius:2px"
@@ -26,7 +26,7 @@
             <v-icon class="mr-2">mdi-email</v-icon>Subscribe Now!
           </v-btn>
         </v-col>
-      </v-layout>
+      </v-row>
     </v-container>
   </form>
 </template>

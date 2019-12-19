@@ -1,9 +1,9 @@
 <template>
   <v-app-bar height="80" app elevation="0" style="z-index:1000">
     <v-container>
-      <v-layout row>
+      <v-row>
         <v-col cols="2" md="4">
-          <v-toolbar-title class="d-none d-md-block">
+          <v-toolbar-title class="d-none d-lg-block">
             <nuxt-link to="/">
               <v-img
                 contain
@@ -15,12 +15,12 @@
               />
             </nuxt-link>
           </v-toolbar-title>
-          <v-toolbar-title class="d-block d-md-none">
+          <v-toolbar-title class="d-block d-lg-none">
             <v-app-bar-nav-icon class="hamburger-icon" @click="$emit('openDrawer')"></v-app-bar-nav-icon>
           </v-toolbar-title>
         </v-col>
         <v-col cols="10" md="8" class="d-flex align-center justify-end">
-          <v-toolbar-items class="d-none d-md-block" style="height:100%">
+          <v-toolbar-items class="d-none d-lg-block" style="height:100%">
             <v-btn text color="transparent" v-for="(menuItem, i) in menu" :key="i">
               <nuxt-link
                 class="signbees-link text-capitalize black--text"
@@ -53,7 +53,7 @@
               >Go to dashboard</v-btn>
             </template>
           </v-toolbar-items>
-          <v-toolbar-items class="d-block d-md-none">
+          <v-toolbar-items class="d-block d-lg-none">
             <nuxt-link to="/">
               <v-img
                 contain
@@ -66,7 +66,7 @@
             </nuxt-link>
           </v-toolbar-items>
         </v-col>
-      </v-layout>
+      </v-row>
     </v-container>
   </v-app-bar>
 </template>

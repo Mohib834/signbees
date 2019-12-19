@@ -6,7 +6,7 @@
       class="banner"
     ></v-img>
     <v-container :fluid="full" style="z-index: 10">
-      <v-layout row align-center class="pa-10 pa-md-0">
+      <v-row align-center class="pa-10 pa-md-0">
         <v-col :offset="full ? 1 : null" :class="full && 'pa-0'">
           <h1 class="display-1 mb-4 line-above">
             <slot name="title" />
@@ -15,7 +15,7 @@
             <slot name="sub-text" />
           </p>
         </v-col>
-      </v-layout>
+      </v-row>
     </v-container>
   </section>
 </template>

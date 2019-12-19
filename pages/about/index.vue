@@ -9,7 +9,7 @@
 
     <section class="section-about">
       <v-container>
-        <v-layout
+        <v-row
           row
           v-for="( item, i ) in aboutContent"
           :key="i"
@@ -27,7 +27,7 @@
           <v-col cols="12" sm="6">
             <v-img :src="item.imgSrc" :srcset="item.imgSrcSet" contain width="550px" height="257px"></v-img>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
   </main>

@@ -15,12 +15,12 @@
       :key="i"
     >
       <v-container>
-        <v-layout row class="pa-10 pa-md-2">
+        <v-row class="pa-10 pa-md-2">
           <v-col cols="12">
             <h2 class="section-heading text-center mb-0 mb-sm-5">{{ item.title }}</h2>
           </v-col>
-        </v-layout>
-        <v-layout row class="pa-10 pa-md-2 pt-0">
+        </v-row>
+        <v-row class="pa-10 pa-md-2 pt-0">
           <v-col cols="12" class="pb-0 pb-md-2">
             <v-img
               contain
@@ -52,7 +52,7 @@
               </v-row>
             </v-container>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
   </main>

@@ -2,7 +2,7 @@
   <main id="pricing-page" class="main">
     <section id="section-intro">
       <v-container>
-        <v-layout>
+        <v-row>
           <v-col>
             <h1 class="display-1 text-center font-weight-medium mb-3">Pricing</h1>
             <p
@@ -10,30 +10,30 @@
               style="font-size:15px; max-width:678px;"
             >Signbees was created to help businesses deliver dynamic content at the right place, at the right time for maximum impact.</p>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
 
     <section id="section-pricing" class="pb-12 mb-10 mt-0 mt-sm-3">
       <v-container>
-        <v-layout row class="mb-12">
+        <v-row class="mb-12">
           <v-col cols="12" md="5" class="offset-md-1 mb-6">
             <PricingCard :pricingData="pricingDataMonthly" />
           </v-col>
           <v-col cols="12" md="5">
             <PricingCard :pricingData="pricingDataAnnually" />
           </v-col>
-        </v-layout>
+        </v-row>
 
-        <v-layout row class="my-6 my-sm-2">
+        <v-row class="my-6 my-sm-2">
           <v-col>
             <h1
               class="display-1 font-weight-medium text-center features-title"
             >Features Available on All Plans</h1>
           </v-col>
-        </v-layout>
+        </v-row>
 
-        <v-layout row wrap class="pa-0 pa-md-12">
+        <v-row wrap class="pa-0 pa-md-12">
           <v-col class="d-flex" cols="12" md="6" v-for="(feature, i) in features" :key="i">
             <v-img
               style="position:relative; top:5px"
@@ -53,7 +53,7 @@
               >{{ feature.text }}</p>
             </v-flex>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
   </main>

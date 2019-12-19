@@ -9,7 +9,7 @@
 
     <section class="section-place" v-for="(item, i) in where" :key="i">
       <v-container fluid class="pa-0">
-        <v-layout row :style="`flex-direction: ${item.imgRight === true ? 'row' : 'row-reverse'}`">
+        <v-row :style="`flex-direction: ${item.imgRight === true ? 'row' : 'row-reverse'}`">
           <v-col
             class="d-flex align-center pa-8 pa-sm-0"
             :class="item.imgRight === true ? 'col-sm-5 offset-sm-1' : 'col-sm-6'"
@@ -44,7 +44,7 @@
           <v-col sm="6" class="pa-0">
             <v-img :src="item.img" alt contain></v-img>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
   </main>

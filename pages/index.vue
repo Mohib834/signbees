@@ -41,14 +41,14 @@
       </v-container>
     </section>
 
-    <section id="section-how-it-works" style="position:relative">
+    <section id="section-how-it-works" style="position:relative; margin-bottom:100px">
       <v-container fluid>
-        <v-layout row class="mb-n5">
+        <v-row class="mb-n5">
           <v-col cols="12" md="6" class="offset-md-6 text-center text-sm-left">
             <h2 class="section-heading">How it Works</h2>
           </v-col>
-        </v-layout>
-        <v-layout row>
+        </v-row>
+        <v-row>
           <v-col sm="6">
             <v-img
               class="ml-n3"
@@ -121,19 +121,19 @@
               </li>
             </ul>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
 
-    <section id="section-content-manager" style="min-height:650px">
+    <section id="section-content-manager" style="min-height:650px; margin-bottom:100px">
       <ContentManagerTabs />
     </section>
 
     <section id="section-ad" class="my-10">
       <v-container style="min-height:760px" class="d-flex align-center">
-        <v-layout row class="pa-10 pa-md-2">
+        <v-row class="pa-10 pa-md-2">
           <v-col cols="12" md="6">
-            <v-img :src="adImg" :srcset="adImgSrcSet" alt contain height="477px"></v-img>
+            <v-img :src="adImg" :srcset="adImgSrcSet" alt contain max-height="477px"></v-img>
           </v-col>
           <v-col cols="12" md="6" class="text-left">
             <h2 class="section-heading mb-6">Free Apps</h2>
@@ -167,13 +167,13 @@
               style="border-radius: 2px; text-transform: none"
               color="primary"
               height="48px"
-              width="220px"
+              width="236px"
             >
-              Get Your Free Trial
+              Connect to signbees now
               <v-icon size="30px" class="mr-n3">mdi-menu-right</v-icon>
             </v-btn>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
 
@@ -187,7 +187,7 @@
 
     <section id="section-cta-banner">
       <v-container class="py-0" style="height:100%">
-        <v-layout row style="height:100%">
+        <v-row style="height:100%">
           <v-col
             cols="12"
             md="6"
@@ -206,7 +206,7 @@
           <v-col cols="12" md="6" class="pa-0 d-flex justify-end" align-self="end">
             <v-img :src="manImg" :srcset="manImgSrcSet" width="436px" height="383px" contain></v-img>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-container>
     </section>
   </main>
@@ -314,6 +314,11 @@ export default {
   &__container {
     display: flex;
   }
+}
+
+#section-ad .v-responsive__content {
+  width: initial !important;
+  max-width: 522px !important;
 }
 
 @media (min-width: 960px) {

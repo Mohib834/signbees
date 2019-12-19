@@ -1,6 +1,6 @@
 <template>
   <v-container style>
-    <v-layout row class="pa-10 pa-md-2">
+    <v-row class="pa-10 pa-md-2">
       <v-col sm="6" class="inset-6">
         <div style="z-index:10; position:relative;">
           <h2 class="section-heading mb-3">Signbees content manager</h2>
@@ -10,8 +10,8 @@
           </p>
         </div>
       </v-col>
-    </v-layout>
-    <v-layout row>
+    </v-row>
+    <v-row>
       <v-col cols="12">
         <v-tabs
           :show-arrows="smallWidth"
@@ -46,7 +46,7 @@
           </v-tab-item>
         </v-tabs>
       </v-col>
-    </v-layout>
+    </v-row>
   </v-container>
 </template>
 
