@@ -47,6 +47,7 @@
                       v-model="userData.email"
                       :rules="rules.email"
                       style="border-radius:0"
+                      validate-on-blur
                     ></v-text-field>
                     <p
                       class="subtitle-2 grey--text font-weight-medium mt-n2 mb-6"
@@ -90,6 +91,7 @@
                           label="First Name"
                           :disabled="loading == true"
                           outlined
+                          validate-on-blur
                           dense
                           type="text"
                         ></v-text-field>
@@ -102,6 +104,7 @@
                           label="Last Name"
                           outlined
                           dense
+                          validate-on-blur
                           type="text"
                         ></v-text-field>
                       </v-col>
@@ -114,6 +117,7 @@
                           v-model="userData.email"
                           label="Email"
                           outlined
+                          validate-on-blur
                           dense
                           type="email"
                         ></v-text-field>
@@ -125,6 +129,7 @@
                           :disabled="loading == true"
                           :rules="rules.password"
                           label="Password"
+                          validate-on-blur
                           v-model="userData.password"
                           outlined
                           dense
@@ -137,6 +142,7 @@
                         <v-text-field
                           :disabled="loading == true"
                           :rules="rules.confirmPassword"
+                          validate-on-blur
                           label="Confirm Password"
                           v-model="userData.confirmPassword"
                           outlined
@@ -269,8 +275,9 @@ export default {
     signUp() {
       const newUser = { ...this.userData };
       delete newUser.confirmPassword;
-
-      this.$store.dispatch("signup", { vm: this, newUser: { ...newUser } });
+      if (this.$refs.form.validate()) {
+        this.$store.dispatch("signup", { vm: this, newUser: { ...newUser } });
+      }
     },
     checkUserEmailExistence() {
       if (this.$refs.form.validate()) {
