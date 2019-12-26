@@ -25,6 +25,7 @@ export const state = () => ({
     mailSent: false,
     ssoLink: '',
     dashboardLink: '',
+    hideHeaderFooter: false,
 })
 
 export const getters = {
@@ -48,6 +49,9 @@ export const getters = {
     },
     dashboardLink(state) {
         return state.dashboardLink;
+    },
+    hideHeaderFooter(state){
+        return state.hideHeaderFooter;
     }
 }
 
@@ -72,6 +76,9 @@ export const mutations = {
     },
     assignDashboardLink(state, payload) {
         state.dashboardLink = payload;
+    },
+    changeHeaderFooterHideStatus(state, payload){
+        state.hideHeaderFooter = payload;
     }
 }
 export const actions = {

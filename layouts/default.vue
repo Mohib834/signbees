@@ -1,6 +1,6 @@
 <template>
   <v-app class="black--text">
-    <TheHeader @openDrawer="drawer = !drawer" :menu="menu" />
+    <TheHeader @openDrawer="drawer = !drawer" :menu="menu" v-if="!hideHeaderFooter"/>
     <v-navigation-drawer v-model="drawer" temporary fixed style="z-index: 1000;">
       <v-list dense>
         <v-list-item class="mb-6 mt-2">
@@ -51,7 +51,7 @@
     </v-navigation-drawer>
     <nuxt />
     <iframe ref="iframe" @load="fetchAuthStatus" v-show="false" :src="ssoLink"></iframe>
-    <TheFooter />
+    <TheFooter v-if="!hideHeaderFooter"/>
   </v-app>
 </template>
 
@@ -79,7 +79,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isUserLoggedIn", "ssoLink", "dashboardLink"])
+    ...mapGetters(["isUserLoggedIn", "ssoLink", "dashboardLink", "hideHeaderFooter"])
   },
   async mounted() {
     //Set Sso and dashboard Link
