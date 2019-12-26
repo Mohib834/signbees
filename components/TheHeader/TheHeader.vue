@@ -29,10 +29,7 @@
             </v-btn>
             <template v-if="!isUserLoggedIn">
               <v-btn text color="transparent">
-                <a
-                  href="https://dashboard.beta.signbees.com/"
-                  class="signbees-link text-capitalize"
-                >sign in</a>
+                <a :href="dashboardLink" class="signbees-link text-capitalize">sign in</a>
               </v-btn>
               <v-btn
                 class="ml-4 text-capitalize"
@@ -46,7 +43,7 @@
             <template v-else>
               <v-btn
                 class="ml-4 text-capitalize"
-                href="https://dashboard.beta.signbees.com"
+                :href="dashboardLink"
                 color="primary"
                 style="border-radius: 2px"
                 height="48px"
@@ -77,7 +74,7 @@ import { mapGetters } from "vuex";
 export default {
   props: ["menu"],
   computed: {
-    ...mapGetters(["isUserLoggedIn"])
+    ...mapGetters(["isUserLoggedIn", "dashboardLink"])
   }
 };
 </script>

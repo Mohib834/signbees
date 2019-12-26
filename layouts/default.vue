@@ -25,10 +25,7 @@
         >{{item.item}}</v-list-item>
         <v-list-item v-if="!isUserLoggedIn" class="mt-6 px-6 d-flex flex-column">
           <v-btn text color="transparent" block outlined class="mb-4">
-            <a
-              href="https://dashboard.beta.signbees.com/"
-              class="signbees-link text-capitalize"
-            >sign in</a>
+            <a :href="dashboardLink" class="signbees-link text-capitalize">sign in</a>
           </v-btn>
           <v-btn
             block
@@ -44,7 +41,7 @@
           <v-btn
             block
             class="text-capitalize"
-            href="https://dashboard.beta.signbees.com"
+            :href="dashboardLink"
             color="primary"
             style="border-radius: 2px"
             height="40px"
@@ -53,6 +50,7 @@
       </v-list>
     </v-navigation-drawer>
     <nuxt />
+    <iframe ref="iframe" v-show="false" :src="ssoLink"></iframe>
     <TheFooter />
   </v-app>
 </template>
@@ -81,13 +79,25 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isUserLoggedIn"])
+    ...mapGetters(["isUserLoggedIn", "ssoLink", "dashboardLink"])
   },
-  mounted() {
+  async mounted() {
+    //Set Sso and dashboard Link
+    this.$store.dispatch("assignLink");
+
+    //fetchAuthState
+    this.$store.dispatch("fetchAuthStatus", {
+      iframe: this.$refs.iframe
+    });
+
     window.addEventListener(
       "message",
       async e => {
-        if (e.origin === "https://sso.beta.signbees.com") {
+        if (
+          e.origin === "https://sso.beta.signbees.com" ||
+          e.origin === "https://sso.signbees.com"
+        ) {
+          console.log(e);
           const storeName = "firebaseLocalStorage";
           const db = await openDB("firebaseLocalStorageDb", 1);
           const tx = db.transaction(storeName, "readwrite");
@@ -103,6 +113,8 @@ export default {
       if (user) {
         this.$store.commit("changeUserLoginStatus", true);
         this.$store.commit("changeLoadingStatus", false);
+      } else {
+        this.$store.commit("changeUserLoginStatus", false);
       }
     });
   }

@@ -23,6 +23,8 @@ export const state = () => ({
     isUserEmailExist: { user: '', exist: false },
     signingUp: false,
     mailSent: false,
+    ssoLink: '',
+    dashboardLink: '',
 })
 
 export const getters = {
@@ -40,6 +42,12 @@ export const getters = {
     },
     mailSent(state) {
         return state.mailSent
+    },
+    ssoLink(state) {
+        return state.ssoLink;
+    },
+    dashboardLink(state) {
+        return state.dashboardLink;
     }
 }
 
@@ -58,9 +66,22 @@ export const mutations = {
     },
     changeMailSentStatus(state, payload) {
         state.mailSent = true
+    },
+    assignSsoLink(state, payload) {
+        state.ssoLink = payload;
+    },
+    assignDashboardLink(state, payload) {
+        state.dashboardLink = payload;
     }
 }
 export const actions = {
+    fetchAuthStatus(context, payload) {
+        payload.iframe.contentWindow.postMessage(
+            { message: 'fetchAuthStatus' },
+            context.state.ssoLink
+        )
+        console.log('inside fetchAuthState')
+    },
     signup(context, payload) {
         context.commit('changeLoadingStatus', true);
         const postMsg = {
@@ -70,7 +91,7 @@ export const actions = {
 
         payload.vm.$refs.iframe.contentWindow.postMessage(
             postMsg,
-            'https://sso.beta.signbees.com'
+            context.state.ssoLink
         );
     },
     checkUserEmail(context, payload) {
@@ -107,5 +128,19 @@ export const actions = {
         }).catch(err => {
             context.commit('changeLoadingStatus', false);
         })
+    },
+    assignLink(context, payload) {
+        let currOrigin;
+        if (process.client) {
+            currOrigin = window.location.href;
+        }
+
+        if (/beta/.test(currOrigin) || /localhost/.test(currOrigin)) {
+            context.commit('assignSsoLink', 'https://sso.beta.signbees.com');
+            context.commit('assignDashboardLink', 'https://dashboard.beta.signbees.com/#/')
+        } else {
+            context.commit('assignSsoLink', "https://sso.signbees.com");
+            context.commit('assignDashboardLink', 'https://dashboard.signbees.com/#/')
+        }
     }
 }

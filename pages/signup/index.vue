@@ -1,7 +1,7 @@
 <template>
   <main id="signup-page">
     <v-card class="iframe-container">
-      <iframe ref="iframe" src="https://sso.beta.signbees.com" width="100%" height="100%"></iframe>
+      <iframe ref="iframe" :src="ssoLink" width="100%" height="100%"></iframe>
     </v-card>
     <v-container>
       <v-row>
@@ -173,16 +173,13 @@
                         <p class="mb-0 mt-4">We have found you on our system!</p>
                         <p>
                           Use your email to
-                          <a
-                            href="https://dashboard.beta.signbees.com"
-                            class="signbees-link"
-                          >Login Now!</a>
+                          <a :href="dashboardLink" class="signbees-link">Login Now!</a>
                         </p>
                         <p class="subtitle-1">
                           <strong>Forgot password?</strong>
                           <br />
                           <a
-                            href="https://dashboard.signbees.com/#/login/forgot-password"
+                            :href="`${dashboardLink}login/forgot-password`"
                             class="signbees-link"
                           >Click here</a> to reset your password now!
                         </p>
@@ -213,7 +210,7 @@ export default {
     tx.done;
 
     if (data[0]) {
-      window.location.replace("https://dashboard.beta.signbees.com/#/");
+      window.location.replace(this.dashboardLink);
     }
   },
   mounted() {
@@ -259,7 +256,7 @@ export default {
   watch: {
     isUserLoggedIn(value) {
       if (value) {
-        window.location.href = "https://dashboard.beta.signbees.com/#/";
+        window.location.href = this.dashboardLink;
       }
     }
   },
@@ -268,7 +265,9 @@ export default {
       "loading",
       "isUserLoggedIn",
       "isUserEmailExist",
-      "signingUp"
+      "signingUp",
+      "dashboardLink",
+      "ssoLink"
     ])
   },
   methods: {
@@ -296,12 +295,7 @@ export default {
 
   .iframe-container {
     position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     z-index: -1;
-    // background: #fff;
-    // box-shadow: 0 0 10px;
     opacity: 0;
   }
 }

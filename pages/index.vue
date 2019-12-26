@@ -49,7 +49,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col sm="6">
+          <v-col sm="6" class="pl-0">
             <v-img
               class="ml-n3"
               :src="dashboardImg"
