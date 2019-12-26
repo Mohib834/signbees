@@ -76,11 +76,13 @@ export const mutations = {
 }
 export const actions = {
     fetchAuthStatus(context, payload) {
-        payload.iframe.contentWindow.postMessage(
-            { message: 'fetchAuthStatus' },
+        const postMsg = {
+            message: 'fetchAuthState'
+        };
+        payload.vm.$refs.iframe.contentWindow.postMessage(
+            postMsg,
             context.state.ssoLink
         )
-        console.log('inside fetchAuthState')
     },
     signup(context, payload) {
         context.commit('changeLoadingStatus', true);

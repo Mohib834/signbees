@@ -50,7 +50,7 @@
       </v-list>
     </v-navigation-drawer>
     <nuxt />
-    <iframe ref="iframe" v-show="false" :src="ssoLink"></iframe>
+    <iframe ref="iframe" @load="fetchAuthStatus" v-show="false" :src="ssoLink"></iframe>
     <TheFooter />
   </v-app>
 </template>
@@ -85,11 +85,6 @@ export default {
     //Set Sso and dashboard Link
     this.$store.dispatch("assignLink");
 
-    //fetchAuthState
-    this.$store.dispatch("fetchAuthStatus", {
-      iframe: this.$refs.iframe
-    });
-
     window.addEventListener(
       "message",
       async e => {
@@ -97,13 +92,17 @@ export default {
           e.origin === "https://sso.beta.signbees.com" ||
           e.origin === "https://sso.signbees.com"
         ) {
-          console.log(e);
-          const storeName = "firebaseLocalStorage";
-          const db = await openDB("firebaseLocalStorageDb", 1);
-          const tx = db.transaction(storeName, "readwrite");
-          const store = tx.objectStore(storeName);
-          await store.put(e.data.data);
-          tx.done;
+          console.log(e.data.data);
+          if (e.data.data) {
+            const storeName = "firebaseLocalStorage";
+            const db = await openDB("firebaseLocalStorageDb", 1);
+            const tx = db.transaction(storeName, "readwrite");
+            const store = tx.objectStore(storeName);
+            await store.put(e.data.data);
+            tx.done;
+          } else {
+            auth.signOut();
+          }
         }
       },
       false
@@ -117,6 +116,11 @@ export default {
         this.$store.commit("changeUserLoginStatus", false);
       }
     });
+  },
+  methods: {
+    fetchAuthStatus(e) {
+      this.$store.dispatch("fetchAuthStatus", { vm: this });
+    }
   }
 };
 </script>
