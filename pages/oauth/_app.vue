@@ -12,9 +12,15 @@
             />
             <v-spacer style="height:50px" />
             <v-sheet class="d-flex flex-column align-center">
-              <h3
-                class="headline mb-6 font-weight-bold"
-              >{{success ? `Your authorization was successful for ${app}` : `Authorization failed for ${app}. ${message}`}}</h3>
+              <h3 v-if="success" class="headline mb-6 font-weight-bold">
+                Your authorization was successful for
+                <span class="text-capitalize">{{app}}</span>.
+              </h3>
+              <h3 class="headline mb-6 font-weight-bold" v-else>
+                Authorization failed for
+                <span class="text-capitalize">{{app}}</span>
+                . {{message}}.
+              </h3>
               <v-btn @click="close" color="primary" depressed>Go to Home</v-btn>
             </v-sheet>
           </v-col>
@@ -33,6 +39,9 @@ export default {
       }
     },
     app() {
+      if (this.$route.params.app.includes("-")) {
+        return this.$route.params.app.replace("-", " ");
+      }
       return this.$route.params.app;
     },
     message() {
