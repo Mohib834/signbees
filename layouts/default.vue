@@ -1,6 +1,6 @@
 <template>
   <v-app class="black--text">
-    <TheHeader @openDrawer="drawer = !drawer" :menu="menu" v-if="!hideHeaderFooter"/>
+    <TheHeader @openDrawer="drawer = !drawer" :menu="menu" v-if="!hideHeaderFooter" />
     <v-navigation-drawer v-model="drawer" temporary fixed style="z-index: 1000;">
       <v-list dense>
         <v-list-item class="mb-6 mt-2">
@@ -51,7 +51,7 @@
     </v-navigation-drawer>
     <nuxt />
     <iframe ref="iframe" @load="fetchAuthStatus" v-show="false" :src="ssoLink"></iframe>
-    <TheFooter v-if="!hideHeaderFooter"/>
+    <TheFooter v-if="!hideHeaderFooter" />
   </v-app>
 </template>
 
@@ -79,7 +79,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isUserLoggedIn", "ssoLink", "dashboardLink", "hideHeaderFooter"])
+    ...mapGetters([
+      "isUserLoggedIn",
+      "ssoLink",
+      "dashboardLink",
+      "hideHeaderFooter"
+    ])
   },
   async mounted() {
     //Set Sso and dashboard Link
@@ -92,7 +97,6 @@ export default {
           e.origin === "https://sso.beta.signbees.com" ||
           e.origin === "https://sso.signbees.com"
         ) {
-          console.log(e.data.data);
           if (e.data.data) {
             const storeName = "firebaseLocalStorage";
             const db = await openDB("firebaseLocalStorageDb", 1);

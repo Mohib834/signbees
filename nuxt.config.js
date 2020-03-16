@@ -1,60 +1,60 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from "vuetify/es5/util/colors";
 
 export default {
-  mode: 'universal',
+  mode: "universal",
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    titleTemplate: '%s',
-    title: 'Signbees',
+    titleTemplate: "%s",
+    title: "Signbees",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon-signbees.ico' }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "favicon-signbees.ico" }]
   },
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fa711e' },
+   ** Customize the progress-bar color
+   */
+  loading: { color: "#fa711e" },
   /*
-  ** Global CSS
-  */
-  css: [
-    '~/assets/styles/style.scss',
-  ],
+   ** Global CSS
+   */
+  css: ["~/assets/styles/style.scss"],
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [
-    '~/plugins/firebase.js',
+    {
+      src: "~/plugins/firebase.js",
+      mode: "client"
+    }
   ],
   /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    '@nuxtjs/vuetify',
-  ],
+   ** Nuxt.js dev-modules
+   */
+  buildModules: ["@nuxtjs/vuetify"],
   /*
-  ** Nuxt.js modules
-  */
-  modules: [
-  ],
+   ** Nuxt.js modules
+   */
+  modules: [],
   /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
+   ** vuetify module configuration
+   ** https://github.com/nuxt-community/vuetify-module
+   */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ["~/assets/variables.scss"],
     theme: {
       light: true,
       themes: {
         light: {
-          primary: '#fa711e',
+          primary: "#fa711e",
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
@@ -66,13 +66,12 @@ export default {
     }
   },
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
   }
-}
+};
