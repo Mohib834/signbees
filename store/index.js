@@ -108,10 +108,8 @@ export const actions = {
     context.commit("changeLoadingStatus", true);
 
     api
-      .get("/user/check/", {
-        params: {
-          email: payload.email
-        }
+      .post("/user/check/", {
+        email: payload.email
       })
       .then(response => {
         if (response.data === "") {
