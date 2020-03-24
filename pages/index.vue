@@ -21,7 +21,7 @@
               >A simple, scalable, and cost effective cloud digital signage for your business to increase brand awareness, reputation, trust, and sales.</p>
               <v-sheet class="banner__button-container">
                 <v-btn
-                  href="#"
+                  to="/signup"
                   nuxt
                   style="border-radius: 2px; text-transform: none"
                   color="primary"

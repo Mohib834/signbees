@@ -92,3 +92,6 @@ sw.*
 
 # firebase 
 plugins/firebase.js
+
+# history
+.history
